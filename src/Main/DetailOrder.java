@@ -1,0 +1,282 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package Main;
+
+import Components.Table.TableCustom;
+import Functions.MySQL.Database;
+import Functions.Utils.GUIHelper;
+import Functions.Utils.Screen;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.awt.Point;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author dxrry
+ */
+public class DetailOrder extends javax.swing.JFrame {
+    
+    private Integer orderId = 0;
+    private Integer userAuthLoginId = 0;
+
+    /**
+     * Creates new form NewJFrame
+     * @param userAuthLoginId
+     * @param orderId
+     */
+    public DetailOrder(Integer userAuthLoginId, Integer orderId) {
+        initComponents();
+        this.orderId = orderId;
+        this.userAuthLoginId = userAuthLoginId;
+        
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.DEFAULT);
+        // Disable Editable
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object [][] {
+            },
+            new String [] {
+                "Nama", "Kategori", "Deskripsi", "Kuantitas", "Harga"
+            }) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        });
+        fillTable(jTable1);
+    }
+    
+    private void fillTable(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+        Database db = new Database();
+        List<Functions.Types.History> fullname = db.getHistoryById(this.orderId);
+        
+        buttonPaymentMerchant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Payments/" + db.getHistoryPaymentMethod(this.orderId) + ".png")));
+        buttonPaymentName.setText(db.getHistoryPaymentName(this.orderId));
+        Integer totalPrice = 0;
+        
+        // Menampilkan semua riwayat
+        for (Functions.Types.History history : fullname) {
+            // Format timestamp menjadi format yang diinginkan
+            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            DateFormat outputFormat = new SimpleDateFormat("dd MMMM yyyy, HH:mm");
+
+            try {
+                Date date = inputFormat.parse(history.getDate());
+                String formattedTimestamp = outputFormat.format(date);
+                
+                String getMenuSelected = history.getMenuSelected();
+                JsonFactory jsonFactory = new JsonFactory();
+                ObjectMapper objectMapper = new ObjectMapper(jsonFactory);
+
+                try {
+                    JsonNode jsonNode = objectMapper.readTree(getMenuSelected);
+                    if (jsonNode.isObject()) {
+                        Iterator<Map.Entry<String, JsonNode>> fields = jsonNode.fields();
+                        
+                        while (fields.hasNext()) {
+                            Map.Entry<String, JsonNode> entry = fields.next();
+                            String key = entry.getKey();
+                            
+                            
+                            Integer orderMenuID = Integer.valueOf(key);
+                            Integer menuPrice = db.getMenuPrice(orderMenuID);
+                            String orderMenuPrice = GUIHelper.priceIdr(menuPrice);
+                            Integer orderQuantity = entry.getValue().asInt();
+                            totalPrice += menuPrice * orderQuantity;
+                            
+                            String orderMenuName = db.getMenuName(orderMenuID);
+                            String orderMenuDesc = db.getMenuDesc(orderMenuID);
+                            
+                            String orderMenuCategories = db.getMenuCategories(orderMenuID);
+
+                            model.addRow(new Object[]{orderMenuName, orderMenuCategories, orderMenuDesc, (orderQuantity), orderMenuPrice});
+                        }
+                        
+                    }
+                } catch (IOException ex) {
+                    System.out.println(ex);
+                }
+
+                
+            } catch (java.text.ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        String totalPriceOrder = GUIHelper.priceIdr(totalPrice);
+        model.addRow(new Object[]{"", "", "", "TOTAL", totalPriceOrder});
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        buttonHistory = new Components.Button();
+        buttonPaymentMerchant = new Components.Button();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        buttonPaymentName = new Components.Button();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buttonHistory.setBackground(new java.awt.Color(255, 189, 36));
+        buttonHistory.setForeground(new java.awt.Color(255, 255, 255));
+        buttonHistory.setText("Kembali Ke History");
+        buttonHistory.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        buttonHistory.setRound(30);
+        buttonHistory.setShadowColor(new java.awt.Color(0, 0, 0));
+        buttonHistory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonHistoryMouseClicked(evt);
+            }
+        });
+        getContentPane().add(buttonHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 660, 1200, 70));
+
+        buttonPaymentMerchant.setBackground(new java.awt.Color(255, 189, 36));
+        buttonPaymentMerchant.setForeground(new java.awt.Color(255, 255, 255));
+        buttonPaymentMerchant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Payments/SHOPEEPAY.png"))); // NOI18N
+        buttonPaymentMerchant.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        buttonPaymentMerchant.setRound(30);
+        buttonPaymentMerchant.setShadowColor(new java.awt.Color(0, 0, 0));
+        buttonPaymentMerchant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPaymentMerchantActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonPaymentMerchant, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 90, 510, 90));
+
+        jTable1.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", "1", "1", null, null}
+            },
+            new String [] {
+                "Nama", "Kategori", "Deskripsi", "Kuantitas", "Harga"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 1180, 350));
+
+        buttonPaymentName.setBackground(new java.awt.Color(255, 189, 36));
+        buttonPaymentName.setForeground(new java.awt.Color(255, 255, 255));
+        buttonPaymentName.setText("Deri Rusman");
+        buttonPaymentName.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        buttonPaymentName.setRound(30);
+        buttonPaymentName.setShadowColor(new java.awt.Color(0, 0, 0));
+        buttonPaymentName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPaymentNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonPaymentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 510, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackgroundDetailOrder.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 120, -1, -1));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void buttonPaymentMerchantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPaymentMerchantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonPaymentMerchantActionPerformed
+
+    private void buttonPaymentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPaymentNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonPaymentNameActionPerformed
+
+    private void buttonHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonHistoryMouseClicked
+        // TODO add your handling code here:
+        Point centerPoint = Screen.getCenterPoint();
+        Loading Loading = new Loading("History", false);
+        Loading.setUserId(this.userAuthLoginId);
+        Loading.setLocation(centerPoint.x - Loading.getWidth() / 2, centerPoint.y - Loading.getHeight() / 2);
+        Loading.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_buttonHistoryMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(DetailOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(DetailOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(DetailOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(DetailOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            new DetailOrder(1, 12).setVisible(true);
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Components.Button buttonHistory;
+    private Components.Button buttonPaymentMerchant;
+    private Components.Button buttonPaymentName;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    // End of variables declaration//GEN-END:variables
+}
