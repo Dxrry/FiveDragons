@@ -25,36 +25,36 @@
 2. Clone Repository ini di NetBeans  
 Open NetBeans Pilih *Team* > *Git* > *Clone* dari  main menu.  
 Untuk *Username* dan *Password* boleh dikosongkan
-![SSFirst](/screenshoots/Screenshot%20from%202023-06-24%2009-02-13.png)
+![SSFirst](/ss/Screenshot%20from%202023-06-25%2010-28-33.png)
 
 3. Konfigurasi *dbUrl*, *dbUsername* dan *dbPassword*
 https://github.com/Dxrry/FiveDragons/blob/d2759cbe63cd8e02c86e8c4439c77dacb8de2966/src/Functions/MySQL/Database.java#L23-L28
 
 4. Build Project (F11)  
 
-![SSSecond](/screenshoots/Screenshot%20from%202023-06-24%2009-19-21.png)
+![SSSecond](/ss/Screenshot%20from%202023-06-24%2009-19-21.png)
 
 5. Finally Run Project (F6)  
 
-![SSThird](/screenshoots/Screenshot%20from%202023-06-25%2010-17-57.png)
+![SSThird](/ss/Screenshot%20from%202023-06-25%2010-17-57.png)
 
 ## Screenshots
 ### Main Menu (Halaman Utama)
-![Main Menu](/screenshoots/DASHBOARD.png)
+![Main Menu](/ss/DASHBOARD.png)
 ### Login (Masuk)
-![Login](/screenshoots/LOGIN.png)
+![Login](/ss/LOGIN.png)
 ### Register (Daftar)
-![Register](/screenshoots/REGISTER.png)
+![Register](/ss/REGISTER.png)
 ### Pembayaran Gateway
-![Pembayaran Gateway](/screenshoots/PAYMENTGATEWAY.png)
+![Pembayaran Gateway](/ss/PAYMENTGATEWAY.png)
 ### Pembayaran
-![Pembayaran](/screenshoots/PAYMENT.png)
+![Pembayaran](/ss/PAYMENT.png)
 ### History Order
-![History Order](/screenshoots/HISTORY.png)
+![History Order](/ss/HISTORY.png)
 ### Detail Order
-![Detail Order](/screenshoots/DETAILORDER.png)
+![Detail Order](/ss/DETAILORDER.png)
 ### Loading (Splash Screen)
-![Loading](/screenshoots/LOADING.png)
+![Loading](/ss/LOADING.png)
 
 ## Referensi
 YouTube Channel: Layanan Fotokopi Online  
