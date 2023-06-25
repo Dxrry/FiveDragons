@@ -79,7 +79,6 @@ public class TableScrollButton extends JLayeredPane {
     private class ScrollLayerUI extends LayerUI<JScrollPane> {
 
         private Shape shape;
-        private Color color = new Color(60, 148, 225);
         private boolean mousePressed;
         private boolean mouseHovered;
         private final Image image = new ImageIcon(getClass().getResource("/table/up.png")).getImage();

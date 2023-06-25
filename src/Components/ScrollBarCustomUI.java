@@ -1,5 +1,6 @@
 package Components;
 
+import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -62,7 +63,7 @@ public class ScrollBarCustomUI extends BasicScrollBarUI {
         int round = 2;
         int spaceX = 2;
         int spaceY = 8;
-        if (scrollbar.getOrientation() == JScrollBar.VERTICAL) {
+        if (scrollbar.getOrientation() == Adjustable.VERTICAL) {
             g2.fill(new RoundRectangle2D.Double(rctngl.getX() + spaceX, rctngl.getY() + spaceY, rctngl.getWidth() - spaceX * 2, rctngl.getHeight() - spaceY * 2, round, round));
         } else {
             g2.fill(new RoundRectangle2D.Double(rctngl.getX() + spaceY, rctngl.getY() + spaceX, rctngl.getWidth() - spaceY * 2, rctngl.getHeight() - spaceX * 2, round, round));
@@ -150,9 +151,9 @@ public class ScrollBarCustomUI extends BasicScrollBarUI {
                     g2.setColor(Color.GRAY);
                 }
             }
-            if (orientation == JScrollBar.VERTICAL) {
-                int xx[] = {4, width - 4, width / 2};
-                int yy[] = {5, 5, 0};
+            if (orientation == Adjustable.VERTICAL) {
+                int[] xx = {4, width - 4, width / 2};
+                int[] yy = {5, 5, 0};
                 Polygon poly = new Polygon(xx, yy, xx.length);
                 g2.translate(0, (y));
                 if (increase) {
@@ -162,8 +163,8 @@ public class ScrollBarCustomUI extends BasicScrollBarUI {
                     g2.fill(poly);
                 }
             } else {
-                int xx[] = {4, height - 4, height / 2};
-                int yy[] = {5, 5, 0};
+                int[] xx = {4, height - 4, height / 2};
+                int[] yy = {5, 5, 0};
                 Polygon poly = new Polygon(xx, yy, xx.length);
                 g2.translate(x, 0);
                 if (increase) {

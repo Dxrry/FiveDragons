@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.TableCellRenderer;
 import Components.ScrollBarCustomUI;
+import javax.swing.ScrollPaneConstants;
 
 public class TableCustom {
 
@@ -43,7 +44,7 @@ public class TableCustom {
             }
         };
         panel.setBackground(new Color(255,189,36));
-        scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, panel);
+        scroll.setCorner(ScrollPaneConstants.UPPER_RIGHT_CORNER, panel);
         scroll.getViewport().setBackground(Color.WHITE);
         scroll.getVerticalScrollBar().setUI(new ScrollBarCustomUI());
         scroll.getHorizontalScrollBar().setUI(new ScrollBarCustomUI());

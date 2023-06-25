@@ -67,7 +67,7 @@ public class CheckoutUpdater {
 
             if (!checkReal.isEmpty() && checkReal.size() > currentCheckoutPages) {
                 Map<Integer, Integer> getCurrentCheckout = checkReal.get(currentCheckoutPages);
-                Integer[] currentCheckoutKeys = getCurrentCheckout.keySet().toArray(new Integer[getCurrentCheckout.size()]);
+                Integer[] currentCheckoutKeys = getCurrentCheckout.keySet().toArray(Integer[]::new);
                 isVisible = iterVisible < currentCheckoutKeys.length;
 
                 for (int i = 0; i < currentCheckoutKeys.length; i++) {

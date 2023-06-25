@@ -4,6 +4,8 @@
  */
 package Functions.Types;
 
+import java.util.Arrays;
+
 /**
  *
  * @author dxrry
@@ -41,6 +43,7 @@ public class Menu {
     }
     
     public byte[] getMenuIcon() {
-        return menuIcon;
+        return Arrays.copyOf(menuIcon, menuIcon.length);
     }
+
 }
