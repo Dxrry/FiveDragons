@@ -1,6 +1,6 @@
 # Tugas Semester 2 | Pemrograman Berbasis Objek
 
-[![DeepSource](https://app.deepsource.com/gh/Dxrry/Semester2-PBO-UAS.svg/?label=active+issues&show_trend=true&token=5sEASpwOghIcmZYu_jeRPH-w)](https://app.deepsource.com/gh/Dxrry/Semester2-PBO-UAS/?ref=repository-badge)
+[![DeepSource](https://app.deepsource.com/gh/Dxrry/FiveDragons.svg/?label=active+issues&show_trend=true&token=_fWvln9xURKrq_HUwIRoEIdm)](https://app.deepsource.com/gh/Dxrry/FiveDragons/?ref=repository-badge)
 
 ## Simple Restaurant Booking (Client)
 * Bahasa Pemrograman: Java
