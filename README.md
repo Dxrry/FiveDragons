@@ -25,44 +25,36 @@
 2. Clone Repository ini di NetBeans  
 Open NetBeans Pilih *Team* > *Git* > *Clone* dari  main menu.  
 Untuk *Username* dan *Password* boleh dikosongkan
-![SSFirst](/Screenshoots/Screenshot%20from%202023-06-24%2009-02-13.png)
+![SSFirst](/screenshoots/Screenshot%20from%202023-06-24%2009-02-13.png)
 
 3. Konfigurasi *dbUrl*, *dbUsername* dan *dbPassword*
-```java
-private Connection createConnection() throws SQLException {
-    String dbUrl = "jdbc:mysql://localhost/database_name"; // Ubah
-    String dbUsername = "database_username"; // Ubah
-    String dbPassword = "database_password"; // Ubah
-    return DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-}
-```
-https://github.com/Dxrry/Semester2-PBO-UAS/blob/797adbe5c0ded7bc6862edcc171abec0f2cb6f4e/src/Functions/MySQL/Database.java#L23-L28
+https://github.com/Dxrry/FiveDragons/blob/d2759cbe63cd8e02c86e8c4439c77dacb8de2966/src/Functions/MySQL/Database.java#L23-L28
 
 4. Build Project (F11)  
 
-![SSSecond](/Screenshoots/Screenshot%20from%202023-06-24%2009-19-21.png)
+![SSSecond](/screenshoots/Screenshot%20from%202023-06-24%2009-19-21.png)
 
 5. Finally Run Project (F6)  
 
-![SSThird](/Screenshoots/Screenshot%20from%202023-06-24%2009-24-33.png)
+![SSThird](/screenshoots/Screenshot%20from%202023-06-25%2010-17-57.png)
 
 ## Screenshots
 ### Main Menu (Halaman Utama)
-![Main Menu](/Screenshoots/DASHBOARD.png)
+![Main Menu](/screenshoots/DASHBOARD.png)
 ### Login (Masuk)
-![Login](/Screenshoots/LOGIN.png)
+![Login](/screenshoots/LOGIN.png)
 ### Register (Daftar)
-![Register](/Screenshoots/REGISTER.png)
+![Register](/screenshoots/REGISTER.png)
 ### Pembayaran Gateway
-![Pembayaran Gateway](/Screenshoots/PAYMENTGATEWAY.png)
+![Pembayaran Gateway](/screenshoots/PAYMENTGATEWAY.png)
 ### Pembayaran
-![Pembayaran](/Screenshoots/PAYMENT.png)
+![Pembayaran](/screenshoots/PAYMENT.png)
 ### History Order
-![History Order](/Screenshoots/HISTORY.png)
+![History Order](/screenshoots/HISTORY.png)
 ### Detail Order
-![Detail Order](/Screenshoots/DETAILORDER.png)
+![Detail Order](/screenshoots/DETAILORDER.png)
 ### Loading (Splash Screen)
-![Loading](/Screenshoots/LOADING.png)
+![Loading](/screenshoots/LOADING.png)
 
 ## Referensi
 YouTube Channel: Layanan Fotokopi Online  
