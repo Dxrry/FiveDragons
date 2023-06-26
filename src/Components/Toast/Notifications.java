@@ -285,11 +285,11 @@ public class Notifications {
 
                 @Override
                 public void end() {
-                    if (show && close == false) {
+                    if (show && !close) {
                         SwingUtilities.invokeLater(() -> {
                             new Thread(() -> {
                                 sleep(duration);
-                                if (close == false) {
+                                if (!close) {
                                     show = false;
                                     animator.start();
                                 }
