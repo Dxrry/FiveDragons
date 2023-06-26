@@ -265,11 +265,13 @@ public class ToastPanelUI extends BasicPanelUI implements StyleableUI, PropertyC
 
         @Override
         public void addLayoutComponent(String name, Component comp) {
+            // This method intentionally left empty.
 
         }
 
         @Override
         public void removeLayoutComponent(Component comp) {
+            // This method intentionally left empty.
 
         }
 

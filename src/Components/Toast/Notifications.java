@@ -181,14 +181,14 @@ public class Notifications {
     public void clear(Location location) {
         List<NotificationAnimation> list = lists.get(location);
         if (list != null) {
-            for (int i = 0; i < list.size(); i++) {
-                NotificationAnimation an = list.get(i);
+            for (NotificationAnimation an : list) {
                 if (an != null) {
                     an.close();
                 }
             }
         }
     }
+
 
     protected ToastNotificationPanel createNotification(Type type, String message) {
         ToastNotificationPanel toastNotificationPanel = new ToastNotificationPanel();
@@ -357,8 +357,6 @@ public class Notifications {
                     y = rec.y + rec.height - (window.getHeight() + insets.bottom);
                     top = false;
                 }
-                default -> {
-                }
             }
             int am = UIScale.scale(top ? animationMove : -animationMove);
             int ly = (int) (getLocation(NotificationAnimation.this) + y + animate * am);
@@ -378,12 +376,11 @@ public class Notifications {
         private int getLocation(NotificationAnimation notification) {
             int height = 0;
             List<NotificationAnimation> list = lists.get(location);
-            for (int i = 0; i < list.size(); i++) {
-                NotificationAnimation n = list.get(i);
+            for (NotificationAnimation n : list) {
                 if (notification == n) {
                     return height;
                 }
-                double v = n.animate * (list.get(i).window.getHeight() + UIScale.scale(horizontalSpace));
+                double v = n.animate * (n.window.getHeight() + UIScale.scale(horizontalSpace));
                 height += top ? v : -v;
             }
             return height;
@@ -391,8 +388,7 @@ public class Notifications {
 
         private void update(NotificationAnimation except) {
             List<NotificationAnimation> list = lists.get(location);
-            for (int i = 0; i < list.size(); i++) {
-                NotificationAnimation n = list.get(i);
+            for (NotificationAnimation n : list) {
                 if (n != except) {
                     n.updateLocation(false);
                 }

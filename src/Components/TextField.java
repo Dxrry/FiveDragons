@@ -116,6 +116,7 @@ public class TextField extends JTextField {
         //  Override this method to remove background or not paint background
         @Override
         protected void paintBackground(Graphics grphcs) {
+            // This method intentionally left empty.
 
         }
     }

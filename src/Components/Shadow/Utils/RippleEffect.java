@@ -56,8 +56,8 @@ public class RippleEffect {
     public void reder(Graphics g, Shape contain) {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        for (int i = 0; i < effects.size(); i++) {
-            Effect effect = effects.get(i);
+
+        for (Effect effect : effects) {
             if (effect != null) {
                 effect.render(g2, contain);
             }
