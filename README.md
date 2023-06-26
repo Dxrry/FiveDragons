@@ -24,7 +24,7 @@ Berikut adalah alat-alat yang digunakan dalam pengembangan proyek ini:
 - Apache NetBeans IDE 16 dengan JDK 20
 
 ## Instalasi
-1. Download & Import SQL: [/database.sql](/required-files/sql/database.sql)
+1. Download & Import SQL: [/required-files/sql/database.sql](/required-files/sql/database.sql)
 2. Clone Repository ini di NetBeans:
    - Buka NetBeans dan pilih *Team* > *Git* > *Clone* dari menu utama.
    - Untuk *Username* dan *Password*, biarkan kosong.
@@ -34,12 +34,13 @@ Berikut adalah alat-alat yang digunakan dalam pengembangan proyek ini:
 4. Tambahkan Library:
    - Pertama, unduh semua file .jar dalam folder [/required-files/libraries/](/required-files/libraries/).
    - Tambahkan semua library ke NetBeans:
-        - Klik kanan pada *Libraries* dan pilih *Add JAR/Folder*.
+        - Klik kanan pada *Libraries* dan pilih *Add JAR/Folder*.  
         ![SSThird](/required-files/screenshots/ant_add_library.png)
-        - Buka semua file library yang diunduh.
+        - Buka semua file library yang diunduh.  
         ![SSThird](/required-files/screenshots/Screenshot%20from%202023-06-26%2019-35-05.png)
         - Hasilnya akan seperti ini:  
-        ![SSThird](/required-files/screenshots/Screenshot%20from%202023-06-26%2019-41-44.png)
+        ![SSThird](/required-files/screenshots/Screenshot%20from%202023-06-26%2019-41-44.png)  
+
 4. Bangun Project (F11):  
     ![SSSecond](/required-files/screenshots/Screenshot%20from%202023-06-24%2009-19-21.png)
 5. Jalankan Project (F6):  
