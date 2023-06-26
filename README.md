@@ -71,3 +71,6 @@ Icons8
 
 DesignAI - GraphicMaker  
 [DesignAI Website Link](https://designs.ai/) | https://designs.ai/
+
+5 Dragons Logo  
+[NewsMedia Website Link](https://www.newsmedia.co.id/games/pr-601098381/trik-room-5-dragon-higgs-domino-buat-kamu-jadi-sultan-dengan-chip-yang-berlimpah)
